@@ -1,12 +1,14 @@
+package data;
+
+
 import java.time.ZonedDateTime;
 
 
 public interface Person {
-    public void getFirstName(String name);
-    public void getLastName(String last_name);
-    public void getPreferredName(String preferred_name);
-    public void getDateOfBirth(String date_of_birth);
-    public void getAge(int age);
+    String getFirst_name();
+    String getLast_name();
+    String getPreferred_name();
+    ZonedDateTime getDate_of_birth();
     public void sayHello();
 
 
