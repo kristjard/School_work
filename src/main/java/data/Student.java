@@ -1,28 +1,44 @@
-import data.Person;
+package data;
 
-public class Student implements Person {
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-    public void getFirstName(String name) {
-
+public class Student extends PersonImpl {
+    public Student(String first_name, String last_name, String preferred_name, ZonedDateTime date_of_birth,
+                   List<Course> courses) {
+        super(first_name, last_name, preferred_name, date_of_birth);
+        this.courses = courses;
     }
 
-    public void getLastName(String last_name) {
+    private List<Course> courses;
 
+    public List<Course> getCourses() {
+        return courses;
+    }
+    public void setCourses(List<Course>courses){
+        this.courses = courses;
     }
 
-    public void getPreferredName(String preferred_name) {
+    public List<String> showAllTeachersNames(List<Course> courses) {
+        this.courses = courses;
 
+        List<String> teachersNames = new ArrayList<String>();
+
+        for (Course course : courses) {
+            teachersNames.add(course.getTeacher().getLast_name());
+        }
+
+        return teachersNames;
     }
 
-    public void getDateOfBirth(String date_of_birth) {
-
+    public List<String> getAllTeacherNames(){
+        return this.getCourses().stream().map(Course::getName).collect(Collectors.toList());
     }
 
-    public void getAge(int age) {
-
-    }
-
+    @Override
     public void sayHello() {
-
+        System.out.println("hello student " + getPreferred_name());
     }
 }

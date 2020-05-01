@@ -1,4 +1,16 @@
 package data;
 
-public class Teatcher {
+import java.time.ZonedDateTime;
+
+public class Teatcher extends PersonImpl {
+    public Teatcher(String first_name, String last_name, String preferred_name, ZonedDateTime date_of_birth) {
+        super(first_name, last_name, preferred_name, date_of_birth);
+    }
+
+    @Override
+    public void sayHello() {
+        System.out.println("Hello teacher " + getFirst_name() + " " + getLast_name());
+    }
+
+
 }
