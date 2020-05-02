@@ -14,7 +14,6 @@ public class Course {
    private int eap;
 
    private PublicHolidayService publicHolidayService = new PublicHolidayService();
-
    public Course(String name, Teatcher teacher, ZonedDateTime start_date, ZonedDateTime end_date, int eap) {
       this.name = name;
       this.teacher = teacher;
@@ -22,8 +21,9 @@ public class Course {
       this.end_date = end_date;
       this.eap = eap;
    }
-
-
+   public Long getLength() {
+      return ChronoUnit.DAYS.between(start_date, end_date) +1;
+   }
    public String getName() {
       return name;
    }
@@ -68,7 +68,7 @@ public class Course {
       }
    }
 
-   @Override
+   /*@Override
    public String toString() {
       return "Course{" +
               "name='" + name + '\'' +
@@ -78,6 +78,6 @@ public class Course {
               ", eap=" + eap +
               ", publicHolidayService=" + publicHolidayService +
               '}';
-   }
+   }*/
 }
 

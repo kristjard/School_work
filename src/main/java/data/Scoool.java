@@ -14,7 +14,7 @@ public class Scoool {
         List<Course> courses = new ArrayList<Course>();
         courses.add(at);
 
-        Student mati = new Student("Mati", "Maasikas", "mumm",
+        Student mati = new Student("Mathias", "Maasikas", "matu",
                 ZonedDateTime.parse("2000-01-01T00:00:00.000+00:00[UTC]"),courses);
 
 
