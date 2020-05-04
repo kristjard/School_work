@@ -38,7 +38,8 @@ public class Student extends PersonImpl {
     }
 
     @Override
-    public void sayHello() {
-        System.out.println("hello student " + getPreferred_name());
+    public String sayHello() {
+
+        return "Hello student " + getPreferred_name();
     }
 }
