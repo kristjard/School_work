@@ -52,7 +52,7 @@ public class PersonImpl implements Person {
         return (int) ChronoUnit.YEARS.between(this.date_of_birth, ZonedDateTime.now());
     }
 
-    public void sayHello() {
-
+    public String sayHello() {
+        return "";
     }
 }

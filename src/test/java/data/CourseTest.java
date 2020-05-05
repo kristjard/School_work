@@ -54,9 +54,8 @@ public class CourseTest {
         //given
         start_date = ZonedDateTime.parse("2020-01-01T00:00:00.000+00:00[UTC]");
         end_date = ZonedDateTime.parse("2020-02-01T00:00:00.000+00:00[UTC]");
-        Course course = new Course("Astronoomiline teleportatsioon",teatcher, start_date, end_date, 20);
         when(publicHolidayService.getPublicHolidaysOnWorkdays(start_date, end_date)).thenReturn(1);
-        long expected_result = 22L;
+        long expected_result = 23L;
         //when
         long result = course.getWorkingDays();
         //then

@@ -8,8 +8,9 @@ public class Teatcher extends PersonImpl {
     }
 
     @Override
-    public void sayHello() {
-        System.out.println("Hello teacher " + getFirst_name() + " " + getLast_name());
+    public String sayHello() {
+
+        return "Hello teacher " + getFirst_name() + " " + getLast_name();
     }
 
 
