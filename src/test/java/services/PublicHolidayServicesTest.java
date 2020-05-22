@@ -52,6 +52,64 @@ public class PublicHolidayServicesTest {
         verify(getRequestedFor(urlEqualTo("/2020/EE")));
     }
 
+    @Test
+    public void emptyJsonArray()throws Exception{
+        //given
+        stubFor(any(anyUrl())
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "text/xml")
+                        .withBody("[]")));
+        //when
+        List<ZonedDateTime> result = publicHolidayService.getPublicHolidays("2020");
+        //then
+        verify(getRequestedFor(urlEqualTo("/2020/EE")));
+
+
+    }
+    @Test(expected = JSONException.class)
+    public void emptyJsonObject()throws Exception{
+        //given
+        stubFor(any(anyUrl())
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "text/xml")
+                        .withBody("{}")));
+        //when
+        List<ZonedDateTime> result = publicHolidayService.getPublicHolidays("2020");
+        //then
+        verify(getRequestedFor(urlEqualTo("/2020/EE")));
+
+
+    }
+    @Test(expected = Exception.class)
+    public void returnsErrorCode()throws Exception{
+        //given
+        stubFor(any(anyUrl())
+                .willReturn(aResponse()
+                        .withStatus(502)
+                        .withHeader("Content-Type", "text/xml")
+                        .withBody("[{}]")));
+        //when
+        List<ZonedDateTime> result = publicHolidayService.getPublicHolidays("2020");
+        //then
+        verify(getRequestedFor(urlEqualTo("/2020/EE")));
+    }
+    @Test(expected = JSONException.class)
+    public void JsonMissingDateField()throws Exception{
+        //given
+        stubFor(any(anyUrl())
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "text/xml")
+                        .withBody("[{\"localName\":\"teine jõulupüha\",\"name\":\"St. Stephen's Day\",\"countryCode\":\"EE\",\"fixed\":true,\"global\":true,\"counties\":null,\"launchYear\":null,\"type\":\"Public\"}]")));
+        //when
+        List<ZonedDateTime> result = publicHolidayService.getPublicHolidays("2020");
+        //then
+        verify(getRequestedFor(urlEqualTo("/2020/EE")));
+    }
+
+
 
 
 }
