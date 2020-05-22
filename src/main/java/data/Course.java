@@ -21,7 +21,7 @@ public class Course {
       this.end_date = end_date;
       this.eap = eap;
    }
-   public Long getLength() {
+   public long getLength() {
       return ChronoUnit.DAYS.between(start_date, end_date) +1;
    }
    public String getName() {
