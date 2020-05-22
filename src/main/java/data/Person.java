@@ -9,7 +9,7 @@ public interface Person {
     String getLast_name();
     String getPreferred_name();
     ZonedDateTime getDate_of_birth();
-    public String sayHello();
+    String sayHello();
 
 
 }
