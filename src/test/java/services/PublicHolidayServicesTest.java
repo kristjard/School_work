@@ -18,8 +18,8 @@ public class PublicHolidayServicesTest {
     ZonedDateTime end_date = ZonedDateTime.parse("2020-02-01T00:00:00.000+00:00[UTC]");
 
     @Rule
-    public WireMockRule wireMockRule = new WireMockRule(); // No-args constructor defaults to port 8080
-    PublicHolidayService publicHolidayService = new PublicHolidayService("http://localhost");
+    public WireMockRule wireMockRule = new WireMockRule(1111); // No-args constructor defaults to port 8080
+    PublicHolidayService publicHolidayService = new PublicHolidayService("http://localhost:1111");
 
     @Test(expected = JSONException.class)
     public void invalidJsonTest() throws Exception{

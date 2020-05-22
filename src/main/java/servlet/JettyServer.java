@@ -13,13 +13,14 @@ public class JettyServer {
         try {
             server = new Server();
             ServerConnector connector = new ServerConnector(server);
-            connector.setPort(8080);
+            connector.setPort(1330);
             server.setConnectors(new Connector[]{connector});
 
             ServletHandler servletHandler = new ServletHandler();
             server.setHandler(servletHandler);
 
             servletHandler.addServletWithMapping(HelloServlet.class, "/hello");
+
             server.start();
         } catch (Exception ex) {
             System.out.println("miskit on mäda");
