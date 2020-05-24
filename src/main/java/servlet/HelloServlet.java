@@ -24,7 +24,5 @@ public class HelloServlet extends HttpServlet {
         response.getWriter().println(greeting);
 
     }
-    public void destroy() {
-        // do nothing.
-    }
+
 }

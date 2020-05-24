@@ -7,6 +7,7 @@ import java.time.temporal.ChronoUnit;
 
 public class Course {
 
+   private int courseID;
    private String name;
    private Teatcher teacher;
    private ZonedDateTime start_date;
@@ -14,7 +15,8 @@ public class Course {
    private int eap;
 
    private PublicHolidayService publicHolidayService = new PublicHolidayService();
-   public Course(String name, Teatcher teacher, ZonedDateTime start_date, ZonedDateTime end_date, int eap) {
+   public Course(int courseID, String name, Teatcher teacher, ZonedDateTime start_date, ZonedDateTime end_date, int eap) {
+      this.courseID = courseID;
       this.name = name;
       this.teacher = teacher;
       this.start_date = start_date;
@@ -24,6 +26,15 @@ public class Course {
    public long getLength() {
       return ChronoUnit.DAYS.between(start_date, end_date) +1;
    }
+
+   public int getCourseID() {
+      return courseID;
+   }
+
+   public void setCourseID(int courseID) {
+      this.courseID = courseID;
+   }
+
    public String getName() {
       return name;
    }
@@ -68,16 +79,16 @@ public class Course {
       }
    }
 
-   /*@Override
+   @Override
    public String toString() {
       return "Course{" +
               "name='" + name + '\'' +
-              ", teacher=" + teacher +
-              ", start_date=" + start_date +
-              ", end_date=" + end_date +
-              ", eap=" + eap +
-              ", publicHolidayService=" + publicHolidayService +
+              ", teacher= " +  teacher.getFirst_name() + " aka "+ teacher.getPreferred_name() +
+              ", start_date= " + start_date +
+              ", end_date= " + end_date +
+              ", eap= " + eap +
+              ", number of days for studying= " + getWorkingDays() +
               '}';
-   }*/
+   }
 }
 

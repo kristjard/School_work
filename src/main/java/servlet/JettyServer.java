@@ -20,6 +20,8 @@ public class JettyServer {
             server.setHandler(servletHandler);
 
             servletHandler.addServletWithMapping(HelloServlet.class, "/hello");
+            servletHandler.addServletWithMapping(CourseListServlet.class, "/cl");
+            servletHandler.addServletWithMapping(DaysForWorkServlet.class, "/dfw");
 
             server.start();
         } catch (Exception ex) {
