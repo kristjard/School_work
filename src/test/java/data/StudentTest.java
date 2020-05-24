@@ -13,7 +13,7 @@ public class StudentTest {
     ZonedDateTime date_of_birth_t = ZonedDateTime.parse("1950-01-01T00:00:00.000+00:00[UTC]");
     Teatcher teatcher = new Teatcher("Uudo", "Uudishimulik", "Unts",
             date_of_birth_t);
-    Course course = new Course("Astronoomiline Teleportatsioon",teatcher, start_date, end_date, 20);
+    Course course = new Course(1,"Astronoomiline Teleportatsioon",teatcher, start_date, end_date, 20);
     private List<Course> courses = new ArrayList<>();
 
     ZonedDateTime date_of_birth = ZonedDateTime.parse("2000-01-01T00:00:00.000+00:00[UTC]");

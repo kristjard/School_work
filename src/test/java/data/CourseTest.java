@@ -21,7 +21,7 @@ public class CourseTest {
     private PublicHolidayService publicHolidayService = new PublicHolidayService();
 
     @InjectMocks
-    private Course course = new Course("Astronoomiline teleportatsioon",teatcher, start_date, end_date, 20);
+    private Course course = new Course(1,"Astronoomiline teleportatsioon",teatcher, start_date, end_date, 20);
 
     @Before
     public void init(){
@@ -41,7 +41,7 @@ public class CourseTest {
         //given
         start_date = ZonedDateTime.parse("2020-02-01T00:00:00.000+00:00[UTC]");
         end_date = ZonedDateTime.parse("2020-01-01T00:00:00.000+00:00[UTC]");
-        Course course = new Course("Astronoomiline teleportatsioon",teatcher, start_date, end_date, 20);
+        Course course = new Course(1,"Astronoomiline teleportatsioon",teatcher, start_date, end_date, 20);
         long expecterd_result = -30L;
         //when
         long result = course.getLength();
@@ -68,7 +68,7 @@ public class CourseTest {
         end_date = ZonedDateTime.parse("2020-01-01T00:00:00.000+00:00[UTC]");
         start_date = ZonedDateTime.parse("2020-02-01T00:00:00.000+00:00[UTC]");
         when(publicHolidayService.getPublicHolidaysOnWorkdays(start_date, end_date)).thenReturn(1);
-        Course course = new Course("Astronoomiline teleportatsioon",teatcher, start_date, end_date, 20);
+        Course course = new Course(1,"Astronoomiline teleportatsioon",teatcher, start_date, end_date, 20);
         String expected_result = "nii ei saa";
         //when
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> course.getWorkingDays());
